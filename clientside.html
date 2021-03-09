@@ -7,7 +7,7 @@
       function theFunction(elements, i) {
         return function(mouseEvent) {
           for(var j = 0; i < elements.length; i++) {
-            if(elements[i].contains(elements[j])) {
+            if(elements[i].contains(elements[j]) && i != j) { //Somehow maybe an element contains itself??? Weird???
               return;
             }
           }
