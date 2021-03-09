@@ -3,6 +3,14 @@
     <title>
       Client-Side Test
     </title>
+    <style>
+      .adasclass {
+        outline-style: none
+      }
+      .adasclass:hover {
+        outline-style: dashed
+      }
+    </style>
     <script>
       function isDraggableDiv(elements, i) {
         for(var j = 0; j < elements.length; j++) {
@@ -36,6 +44,7 @@
         var divEls = document.getElementsByTagName("div");
         for(var i = 0; i < divEls.length; i++) {
           if(isDraggableDiv(divEls, i)) {
+            divEls[i].className += " adasclass";
             divEls[i].draggable = true;
             divEls[i].ondrop = drop(divEls, i);
             divEls[i].ondragover = allowDrop(divEls, i);
@@ -60,11 +69,19 @@
       <div>
         <p id="innerP"> Nested: P1 </p>
         <p> Nested: P2 </p>
+        <ul>
+          <li>
+            <div><p> DIV INSIDE A LIST</p></div>
+          </li>
+          <li>
+            <p> Just a generic paragraph. </p>
+          </li>
+        </ul>
       </div>
     </div>
     <button id="yeet" onclick="theThing();document.getElementById('yeet').remove();">
       Do the JavaScript thing
     </button>
-    <p> Update Notice </p>
+    <p> Update Notice 2: The Electric Boogaloo</p>
   </body>
 </html>
