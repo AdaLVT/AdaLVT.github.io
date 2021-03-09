@@ -50,11 +50,11 @@
         for(var i = 0; i < divEls.length; i++) {
           if(isDraggableDiv(divEls, i)) {
             divEls[i].className += " adasclass";
-            divEls[i].ondrop = drop(divEls, i);
             divEls[i].ondragstart = dragStart(divEls, i);
           }
           divEls[i].draggable = true;
           divEls[i].ondragover = allowDrop(divEls, i);
+          divEls[i].ondrop = drop(divEls, i);
         }
       }
             
@@ -87,6 +87,6 @@
     <button id="yeet" onclick="theThing();document.getElementById('yeet').remove();">
       Do the JavaScript thing
     </button>
-    <p> Hopeful!!!! </p>
+    <p> Hhhhhhhh </p>
   </body>
 </html>
