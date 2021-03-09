@@ -4,27 +4,46 @@
       Client-Side Test
     </title>
     <script>
-      function theFunction(elements, i) {
-        return function(mouseEvent) {
-          for(var j = 0; j < elements.length; j++) {
-            if(elements[i].contains(elements[j]) && i != j) {
-              return;
-            }
-          }
-          if(elements[i].style.outlineStyle == "dashed")
-            elements[i].style.outlineStyle = "none";
-          else
-            elements[i].style.outlineStyle = "dashed";
+      function isDraggableDiv(elements, i) {
+        for(var j = 0; j < elements.length; j++) {
+          if(elements[i].contains(elements[j])) return false;
         }
+        return true;
       }
+      
+      function dragStart(elements, i) {
+        return function(event) {
+          event.dataTransfer.setData("Node", elements[i]);
+          
+        }; //Need to use a function, so elements and i are passed on.
+      }
+      
+      function allowDrop(elements, i) {
+        return function(event) {
+          event.preventDefault();
+        };
+      }
+      
+      function drop(elements, i) {
+        return function(event) {
+          event.preventDefault();
+          var node = event.dataTransfer.getData("Node")
+          event.target.appendChild(node);
+        };
+      }
+      
       function theThing() {
-        var divElements = document.getElementsByTagName("div");
-        var divArray = [];
-        for(var i = 0; i < divElements.length; i++) {
-          divElements[i].onmouseover = theFunction(divElements, i);
+        var divEls = document.getElementsByTagName("div");
+        for(var i = 0; i < divEls.length; i++) {
+          if(isDraggableDiv(divEls, i)) {
+            divEls[i].draggable = true;
+            divEls[i].ondrop = drop(divEls, i);
+            divEls[i].ondragover = allowDrop(divEls, i);
+            divEls[i].ondragstart = dragStart(divEls, i);
+          }
         }
-        //console.log(document.getElementById("outerDiv").contains(document.getElementById("innerP")));
       }
+            
     </script>
   </head>
   <body>
@@ -46,6 +65,6 @@
     <button id="yeet" onclick="theThing();document.getElementById('yeet').remove();">
       Do the JavaScript thing
     </button>
-    <p> WHAT THE HECK. PLEASE UPDATE! </p>
+    <p> Update Notice </p>
   </body>
 </html>
