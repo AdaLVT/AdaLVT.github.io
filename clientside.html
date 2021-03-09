@@ -3,6 +3,23 @@
     <title>
       Client-Side Test
     </title>
+    <script>
+      function theFunction(element) {
+        return function(mouseEvent) {
+          if(element.style.outlineStyle == "dashed")
+            element.style.outlineStyle = "hidden";
+          else
+            element.style.outlineStyle = "dashed";
+        }
+      }
+      function theThing() {
+        var divElements = document.getElementsByTagName("div");
+        var divArray = [];
+        for(var i = 0; i < divElements.length; i++) {
+          divElements[i].onclick = theFunction(divElements[i]);
+        }
+      }
+    </script>
   </head>
   <body>
     <div> <!-- This is a simple div tag-->
@@ -20,5 +37,8 @@
         <p> Nested: P2 </p>
       </div>
     </div>
+    <button id="yeet" onclick="theThing();document.getElementById('yeet').remove();">
+      Do the JavaScript thing
+    </button>    
   </body>
 </html>
