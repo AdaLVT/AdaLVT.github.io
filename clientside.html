@@ -24,7 +24,7 @@
       
       function dragStart(elements, i) {
         return function(event) {
-          event.dataTransfer.setData("Node", elements[i]);
+          event.dataTransfer.setData("Text", i);
           
         }; //Need to use a function, so elements and i are passed on.
       }
@@ -38,8 +38,8 @@
       function drop(elements, i) {
         return function(event) {
           event.preventDefault();
-          var node = event.dataTransfer.getData("Node")
-          event.target.appendChild(node);
+          var j = event.dataTransfer.getData("Text");
+          event.target.appendChild(elements[j]);
         };
       }
       
@@ -85,6 +85,6 @@
     <button id="yeet" onclick="theThing();document.getElementById('yeet').remove();">
       Do the JavaScript thing
     </button>
-    <p> LOL </p>
+    <p> JJJJJJJJJJJJJ </p>
   </body>
 </html>
