@@ -4,21 +4,26 @@
       Client-Side Test
     </title>
     <script>
-      function theFunction(element) {
+      function theFunction(elements, i) {
         return function(mouseEvent) {
-          if(element.style.outlineStyle == "dashed")
-            element.style.outlineStyle = "none";
+          for(var j = 0; i < elements.length; i++) {
+            if(elements[i].contains(elements[j])) {
+              return;
+            }
+          }
+          if(elements[i].style.outlineStyle == "dashed")
+            elements[i].style.outlineStyle = "none";
           else
-            element.style.outlineStyle = "dashed";
+            elements[i].style.outlineStyle = "dashed";
         }
       }
       function theThing() {
         var divElements = document.getElementsByTagName("div");
         var divArray = [];
         for(var i = 0; i < divElements.length; i++) {
-          divElements[i].onmouseover = theFunction(divElements[i]);
+          divElements[i].onmouseover = theFunction(divElements, i);
         }
-        console.log(document.getElementById("outerDiv").contains(document.getElementById("innerP")));
+        //console.log(document.getElementById("outerDiv").contains(document.getElementById("innerP")));
       }
     </script>
   </head>
