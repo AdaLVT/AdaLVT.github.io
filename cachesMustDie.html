@@ -6,12 +6,18 @@
     <style>
       button {
         visibility: hidden;
+        width: 0;
+        height: 0;
       }
     </style>
   </head>
   <body>
-    Body text <br> What <br>
-    <button id="b" onclick="javascript:Android.androidAlert('It works!');"> Button </button>
-    Also to check if it got updated. ID is B.
+    Initial text.
+    <button id="up" onclick="javascript:Android.androidAlert('UP');"></button>
+    <button id="down" onclick="javascript:Android.androidAlert('DOWN');"></button>
+    <button id="left" onclick="javascript:Android.androidAlert('LEFT');"></button>
+    <button id="right" onclick="javascript:Android.androidAlert('RIGHT');"></button>
+    <button id="tap" onclick="javascript:Android.androidAlert('TAP');"></button>
+    Up, Down, Left, Right, *TAP*
   </body>
 </html>
