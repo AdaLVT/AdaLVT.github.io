@@ -1,0 +1,25 @@
+<html>
+  <head>
+  <title></title>
+</head>
+<body>
+<p>Calculate Dosage.</p>
+<button onclick="f()">Click to Calculate</button>
+<br>
+<br>Enter Weight in kg:
+<input type="text" id="txt1" name="Weight (in kg)">Enter Concentration:
+<input type="text" id="txt2" name="Concentration (mg/mL)">Enter Dose:
+<input type="text" id="txt3" name="Dose (mg/kg)">
+<p id="demo"></p>
+<script>
+    function f() {
+        var y = +document.getElementById("txt1").value;
+        var z = +document.getElementById("txt2").value;
+        var w = +document.getElementById("txt3").value;
+        var x = y*z/w;
+        document.getElementById("demo").innerHTML = x;
+    }
+</script>
+
+
+</body></html>
